@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+      <h1>ジャンル編集</h1>
+      <%= form_with model: @genre do |f| %>
+        <div class="m-sm-1">
+          <label for="inputName">name</label>
+        </div>
+        <%= f.text_field :name %>
+        <div class="m-sm-1 ">
+          <%= f.submit "Update",class: 'btn btn-success' %>
+        </div>
+        <% end %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,14 @@
+<div class="col-md-8">
+
+  <h2 class="mt-3">新規商品登録</h2>
+   <%= form_with model: @item do |f| %>
+    <h4>商品名</h4>
+      <%= f.text_field :name %>
+    <h4>商品説明文</h4>
+      <%= f.text_area :introduction %>
+    <h4>税抜価格</h4>
+    <%= f.text_field :price %>
+
+     <%= f.submit 'Create Book',class: 'btn btn-success' %>
+  <% end %>
+</div>
