@@ -12,5 +12,11 @@ class Public::CartItemsController < ApplicationController
   end
 
   def create
+    @cart_item=CartItem.new(cart_item_params[:item_id])
   end
 end
+
+  private
+  def cart_item_params
+      params.require(:cart_item).permit(:item_id, :amount)
+  end

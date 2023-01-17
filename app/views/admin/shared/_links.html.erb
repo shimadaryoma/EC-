@@ -1,4 +1,66 @@
-<%- if controller_name != 'sessions' %>
-  <%= link_to "Log in", new_session_path(resource_name) %><br />
-<% end %>
+
+
+ <header>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+  <a class="navbar-brand" href="https://090ddf88141c4033a1a0954dcce7f49e.vfs.cloud9.ap-northeast-1.amazonaws.com/">
+   <%= image_tag 'asia.jpg', size: '100x50' %>
+  </a>
+
+
+    <button class="navbar-toggler" type="button" date-toggle="collapse" data-target="#navbarNavDropdown"
+    aria-label="Toggle navigation" aria-expanded="false">
+     <span class="navbar-toggle-icon"></span>
+    </button>
+    <div class="collaspe navbar-collaspe" id="navbarNavDropdown"></div>
+     <ul class="navbar-nav ml-auto">
+       <li>
+        <div class="nav-link text-light">
+         <% if admin_signed_in? %>
+          <%= link_to "商品一覧", admin_items_path %>           
+         <% else %>
+           <%= link_to "About", homes_about_path %>
+         <% end %>
+        </div>
+        <li>
+        <div class="nav-link text-light">
+         <% if admin_signed_in? %>
+           <%= link_to "商品一覧", admin_items_path %>
+         <% else %>
+           <%= link_to "会員一覧", admin_customers_path %>
+         <% end %>
+        </div>                  
+       </li>
+       <li>
+        <div class="nav-link text-light">
+         <% if admin_signed_in? %>
+           <%= link_to "注文履歴一覧", admin_homes_top_path %>
+         <% else %>
+           <%= link_to "新規登録", new_admin_session_path %>   
+         <% end %>
+        </div>
+       </li>
+       <li>
+         <div class="nav-link text-light">
+          <% if admin_signed_in? %>
+            <%= link_to "ジャンル一覧", admin_genres_path %>
+          <% else %>
+            <%= link_to "ログイン", admin_session_path %>
+          <% end %>
+        </div>
+       </li>
+       <li>
+         <div class="nav-link text-light">
+          <% if admin_signed_in? %>
+           <%= link_to "ログアウト", destroy_admin_session_path %>
+          <% else %>
+           
+          <% end %>
+        </div>
+       </li>
+       
+     </ul>
+  </div>
+  </nav>
+  </header>
 

@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 2022_12_29_085941) do
   end
 
   create_table "addresses", force: :cascade do |t|
+    t.integer "customer_id"
     t.string "name"
     t.string "postal_code"
     t.string "address"
@@ -61,6 +62,8 @@ ActiveRecord::Schema.define(version: 2022_12_29_085941) do
   end
 
   create_table "cart_items", force: :cascade do |t|
+    t.integer "item_id"
+    t.integer "customer_id"
     t.integer "amount"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -79,7 +82,7 @@ ActiveRecord::Schema.define(version: 2022_12_29_085941) do
     t.string "postal_code"
     t.string "address"
     t.string "telephone_number"
-    t.boolean "is_deleted"
+    t.boolean "is_deleted", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_customers_on_email", unique: true
@@ -93,6 +96,7 @@ ActiveRecord::Schema.define(version: 2022_12_29_085941) do
   end
 
   create_table "items", force: :cascade do |t|
+    t.integer "genre_id"
     t.string "name"
     t.text "introduction"
     t.integer "price"
@@ -102,6 +106,8 @@ ActiveRecord::Schema.define(version: 2022_12_29_085941) do
   end
 
   create_table "order_details", force: :cascade do |t|
+    t.integer "item_id"
+    t.integer "order_"
     t.integer "purchase_price"
     t.integer "amount"
     t.integer "production_statu"
@@ -110,6 +116,7 @@ ActiveRecord::Schema.define(version: 2022_12_29_085941) do
   end
 
   create_table "orders", force: :cascade do |t|
+    t.integer "customer_id"
     t.string "shipping_postal_code"
     t.string "shipping_address"
     t.string "shipping_name"

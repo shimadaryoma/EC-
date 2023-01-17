@@ -1,27 +1,76 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-8 offset-md-1">
-      <h2>商品詳細</h2>
-      <table class="table">
-        <tbody>
-          <tr>
-            <td>
-              <%= image_tag @item.image(100,100)%>
-            </td>
-            <td>
-              <%= link_to admin_items_edit_path(@item.id) do %>
-                <% @item.name %>
+<%= render "admin/shared/links" %>
+  <div class="container">
+    <div class="column">
+      <div class="col-md-8 offset-md-1">
+        <h2>商品詳細</h2>
+          <div class="row">
+            <div>
+              <% if @item.image.attached? %>
+                <%= image_tag @item.image %>
+              <% else %>
+                <%= image_tag 'no_image', size: "100x100" %>
               <% end %>
-            </td>
-            <td>
-              <%= @item.introduction %>
-            </td>
-            <td>
-              <%= @item.price %>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+            </div>
+            <div>
+              <div class="mx-3 field row">
+               <div class="px-3 pt-3">
+                 商品説明
+               </div>
+               <div class="px-3 pt-3">
+                 <%= @item.name %>
+               </div>
+              </div>
+
+              <div class="mx-3 field row">
+               <div class="px-3 pt-3">
+                 商品説明
+               </div>
+               <div class="px-3 pt-3">
+                 <%= @item.introduction %>
+               </div>
+              </div>
+
+              <div class="mx-3 field row">
+               <div class="px-3 pt-3">
+                 ジャンル
+               </div>
+               <div class="px-3 pt-3">
+                 <%= @item.genre.name %>
+               </div>
+              </div>
+
+              <div class="mx-3 field row">
+               <div class="px-3 pt-3">
+                 税込価格<br>
+                 (税抜価格)
+               </div>
+               <div class="px-3 pt-3">
+                  ¥<%= @item.price / 10 + @item.price %>
+                  (<%=  @item.price %>)円
+               </div>
+              </div>
+
+              <div class="mx-3 field row">
+               <div class="px-3 pt-3">
+                 販売ステータス
+               </div>
+               <div class="px-3 pt-3">
+                 <% if @item.is_active==true %>
+                   <p class="text-success">販売中</p>
+                 <% else %>
+                   <P class="text-secondary">販売停止中</P>
+                 <% end %>
+               </div>
+              </div>
+            </div>
+          </div>
+      </div>
+      <div class="text-center">
+        <button class="btn btn-success">
+          <%= link_to edit_admin_item_path(@item.id) do %>
+            編集する
+          <% end %>
+        </button>
+      </div>
     </div>
   </div>
-</div>

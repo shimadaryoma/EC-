@@ -1,2 +1,46 @@
-<h1>Admin::Customers#index</h1>
-<p>Find me in app/views/admin/customers/index.html.erb</p>
+<%= render "admin/shared/links" %>  
+  <div class="container px-5 px-sm-0">
+    <div class="row">
+      <div class="col-md-8 offset-md-1">
+        <h2 class="bg-light col-3 text-center mt-5">会員一覧</h2>
+        <table class="table table-hover table-inverse mt-5 mx-5">
+          <thead>
+            <tr class="bg-light">
+              <th>会員ID</th>
+              <th>氏名</th>
+              <th>メールアドレス</th>
+              <th>ステータス</th>
+              <th colspan="3"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @customers.each do |customer| %>
+              <tr>
+                <td>
+                  <%= customer.id %>
+                </td>
+                <td><%= link_to admin_customer_path(customer.id) do %>
+                  <%= customer.first_name %>　<%= customer.last_name %>
+                  <% end %>
+                </td>
+                <td>
+                  <%= customer.email %>
+                </td>
+                <td>
+                  <% if customer.is_deleted == false %>
+                    <p class="text-success">
+                      有効
+                    </p>
+                  <% else %>
+                    <p class="text-secondary">
+                      退会
+                    </p>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
