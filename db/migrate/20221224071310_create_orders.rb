@@ -8,7 +8,7 @@ class CreateOrders < ActiveRecord::Migration[6.1]
       t.integer :total_payment
       t.integer :payment_method 
       t.integer :order_received_status
-      t.string :postage
+      t.integer :postage
       
       
 

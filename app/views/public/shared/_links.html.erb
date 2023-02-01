@@ -4,7 +4,7 @@
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container">
   <a class="navbar-brand" href="https://090ddf88141c4033a1a0954dcce7f49e.vfs.cloud9.ap-northeast-1.amazonaws.com/">
-   <%= image_tag 'asia.jpg', size: '100x50' %>
+   <%= image_tag 'top_cake.jpg', size: '100x50' %>
   </a>
 
 
@@ -37,7 +37,7 @@
            <% if customer_signed_in? %>
              <%= link_to "カート",  cart_items_path %>
            <% else %>
-             <%= link_to "新規登録1", new_customer_registration_path %>
+             <%= link_to "新規登録", new_customer_registration_path %>
            <% end %>
          </div>
        </li>

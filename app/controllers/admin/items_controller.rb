@@ -10,8 +10,8 @@ class Admin::ItemsController < ApplicationController
 
   def create
     @item=Item.new(item_params)
-    if@item.save
-      redirect_to admin_items_path notice: "You have created item successfully."
+    if@item.save!
+      redirect_to admin_item_path(@item.id), notice: "You have created item successfully."
     else
       @items=Item.all
       render:new, noitce: "An error occurred"
@@ -29,7 +29,9 @@ class Admin::ItemsController < ApplicationController
 
   def update
     @item=Item.find(params[:id])
-    @item.update(item_params)
+    if @item.update(item_params)
+      redirect_to admin_item_path(params[:id])
+    end 
   end
   
     private

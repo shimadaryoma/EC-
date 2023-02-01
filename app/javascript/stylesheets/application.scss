@@ -1,1 +1,11 @@
 @import '~bootstrap/scss/bootstrap';
+
+.bg-image {
+  background-image: url("../../assets/images/top_cake.jpeg");
+  background-size: cover
+}
+
+.border {
+
+  background-color: white
+}

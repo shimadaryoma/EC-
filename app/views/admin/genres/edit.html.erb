@@ -1,16 +1,21 @@
-<div class="container">
-  <div class="row">
-    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-      <h1>ジャンル編集</h1>
-      <%= form_with model: @genre do |f| %>
-        <div class="m-sm-1">
-          <label for="inputName">name</label>
+<%= render "admin/shared/links" %>
+  <div class="container">
+    <div class="mt-5">
+        <h1>ジャンル編集</h1>
+        <%= form_with model: @genre, url: admin_genre_path, method: :patch do |f| %>
+        <div class="row mt-5">
+          <div class="mx-5">
+            <h6 class="text-center">
+              <strong>
+                ジャンル名
+              </strong>
+            </h6>
+          </div class="mx-5">
+          <%= f.text_field :name %>
+          <div class="mx-5">
+            <%= f.submit "Update",class: 'btn btn-success' %>
+          </div>
+          <% end %>
         </div>
-        <%= f.text_field :name %>
-        <div class="m-sm-1 ">
-          <%= f.submit "Update",class: 'btn btn-success' %>
-        </div>
-        <% end %>
     </div>
   </div>
-</div>

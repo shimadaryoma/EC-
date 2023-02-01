@@ -1,2 +1,70 @@
-<h1>Public::Orders#new</h1>
-<p>Find me in app/views/public/orders/new.html.erb</p>
+<%= render "public/shared/links" %>
+  <div class="container">
+    <div class="mx-5 mt-5">
+      <h2 class="text-center bg-light mx-5 col-4">
+        注文情報入力
+      </h2>
+    </div>
+    
+      <h4>
+        支払方法
+      </h4>
+
+        <%= form_with model: @order, url: orders_info_comfirm_path do |f| %>
+          <%= f.radio_button :payment_method, "credit_card" %> クレジットカード<br>
+          <%= f.radio_button :payment_method, "transfer" %> 銀行振込
+
+    
+    <div class="mt-4">
+      <h4>
+        お届け先
+      </h4>
+      <div class="mx-5">
+        <p><%#= f.radio_button :shipping_address, "current_customer.address" %> 
+        <%= radio_button_tag :number, "1" %> ご自身の住所<br>
+        〒<%= @customer.postal_code %> <%= @customer.address %> <br>
+        <%= @customer.first_name %><%= @customer.last_name %></p>
+      </div>
+      <div class="mx-5">
+        <p>
+          <%= radio_button_tag :number, "2" %>登録済住所から選択<br>
+         <%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :address_display) %>
+       </div>
+       <div class="mx-5 row">
+          <p><%= radio_button_tag :number, "3" %>新しいお届け先</p>
+        <table class="table table-borderless">
+          <thead>
+            <tr>
+              <th class="col-3">
+                郵便番号(ハイフンなし)
+              </th>
+               <td>
+                <%= f.text_field :shipping_postal_code %>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                住所
+              </th>
+              <td>
+                <%= f.text_field :shipping_address %>
+              </td>              
+            </tr>
+            <tr>
+              <th>
+                宛名
+              </th>
+              <td>
+                <%= f.text_field :shipping_name %>
+              </td>              
+            </tr>
+          </thead>
+        </table>
+       </div>
+     </div>
+     <div class="text-center">
+       <%= f.submit "確認画面へ進む", class: "btn btn-info" %>
+     </div>
+     <% end %>
+  </div>
+  

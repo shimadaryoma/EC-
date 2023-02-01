@@ -4,7 +4,7 @@
       <div class="col-md-8 offset-md-1">
         <h2 class="bg-light col-md-6 text-center">ジャンル一覧・追加</h2>
             <div class="mt-5 ">
-              <%= form_with model: @genre, method: :get,  url: admin_genres_path do |f| %>
+              <%= form_with model: @genre, url: admin_genres_path do |f| %>
                 <h4>ジャンル名</h4>
                 <%= f.text_field :name %>
                 <%= f.submit '新規ジャンル投稿',class: 'btn btn-success' %>
